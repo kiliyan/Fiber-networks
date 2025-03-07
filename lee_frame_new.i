@@ -221,9 +221,32 @@
     dtmin = 0.005
     end_time = 4.01
   []
+
+  [Postprocessors]
+   [./disp_xtip]
+      type = PointValue
+      point = '0.0 0.0 0.0'
+      variable = disp_x
+    [../]
+
+   [./disp_ytip]
+      type = PointValue
+      point = '0.0 0.0 0.0'
+      variable = disp_y
+    [../]
+
+    [./disp_x_node5]
+        type = NodalVariableValue
+        variable = disp_x
+        nodeid = 5
+    [../]
+
+    [./force_value]
+        type = FunctionValuePostprocessor
+        function = force
+    [../]
+  []
   
-
-
   [Outputs]
     exodus = true
     csv =  true
